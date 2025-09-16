@@ -36,7 +36,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <details open>
         <summary>Voice VR - 2025.09.16</summary>
         <p></p>
-        <button id="randomBtn">randomBtn</button>
+        <button id="randomBackgroundBtn">random Background</button>
+        4組 = alps, chess, night, snow
+        <p></p>
+        <button id="randomGltfBtn">random GLTF</button>
+        5組 = horse, cat, duck, plant, dog
         <p></p>
       </details>
     </header>
@@ -148,8 +152,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       randomizeSkyboxes()
       randomizePosition()
 
-      document.querySelector('#randomBtn').addEventListener('click', () => {
+      document.querySelector('#randomBackgroundBtn').addEventListener('click', () => {
         randomizeSkyboxes();
+      });
+
+      document.querySelector('#randomGltfBtn').addEventListener('click', () => {
         randomizePosition();
       });
 
