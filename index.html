@@ -36,10 +36,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <details open>
         <summary>Voice VR - 2025.09.16</summary>
         <p></p>
-        <button id="randomBackgroundBtn">random Background</button>
+        <button id="randomBackgroundBtn">Background</button>
         4組 = alps, chess, night, snow
         <p></p>
-        <button id="randomGltfBtn">random GLTF</button>
+        <button id="randomGltfBtn">GLTF</button>
         5組 = horse, cat, duck, plant, dog
         <p></p>
       </details>
@@ -99,13 +99,20 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       // 用來存目前的 node
       let currentNode = null;
       let currentSkyboxes = null;
+      let skyboxesIndex = 0
+      let nodeIndex = 0
 
       function randomizeSkyboxes() {
         if (currentSkyboxes) {
           scene.removeNode(currentSkyboxes);
         }
-
-        const url = skyboxes[Math.floor(Math.random() * skyboxes.length)];
+        
+        skyboxesIndex = skyboxesIndex + 1
+        if(skyboxesIndex == skyboxes.length){
+          skyboxesIndex = 0
+        }
+        // const url = skyboxes[Math.floor(Math.random() * skyboxes.length)];
+        const url = skyboxes[skyboxesIndex];
 
         scene.addNode(new SkyboxNode({
           url: url, //stierberg_sunrise.jpg chess-pano-4k.png
@@ -119,8 +126,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             scene.removeNode(currentNode);
           }
 
+          nodeIndex = nodeIndex + 1
+          if (nodeIndex == models.length) {
+            nodeIndex = 0
+          }
           // 從清單裡隨機挑一個
-          const url = models[Math.floor(Math.random() * models.length)];
+          // const url = models[Math.floor(Math.random() * models.length)];
+          const url = models[nodeIndex];
 
           // 建立新的 Gltf2Node
           let node = new Gltf2Node({ url });
