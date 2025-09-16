@@ -279,16 +279,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         scene.endFrame();
       }
 
-      function handIdx(src) { return src.handedness === 'left' ? 0 : 1; }
       function onSelectEnd(ev) {
-          
-        const i = handIdx(ev.inputSource);
-        if(i == 0){
+        // console.log(ev.inputSource.handedness);
+        let handedness = ev.inputSource.handedness
+        if(handedness == 'none'){
           randomizeSkyboxes();
           randomizePosition();
+        } else if(handedness == 'left') {
+          randomizePosition();
         }else{
-            randomizeSkyboxes();
-            randomizePosition();
+          randomizeSkyboxes();
         }
       }
 
